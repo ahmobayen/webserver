@@ -1,0 +1,244 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: (white);
+    color: #222831;
+    padding-top: 10px;
+}
+
+
+/* toggle the colour between dark mode and light mode */
+
+.dark-mode {
+    background-color: #222831;
+    ;
+    color: white;
+}
+
+
+/* toggle the navbar colour between dark mode and light mode */
+
+.navbar-image-light {
+    background-image: linear-gradient(to right, #209cee, white, white);
+}
+
+.navbar-image-dark {
+    background-image: linear-gradient(to right, #209cee, #222831, #222831);
+    color: white;
+}
+
+
+/**********************************/
+
+
+/**********************************/
+
+
+/**********************************/
+
+
+/* The sidebar menu */
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #393E46;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+
+/* The button used to open the sidebar */
+
+.sidebar-manager {
+    cursor: pointer;
+    background-color: #393E46;
+    color: white;
+    border: none;
+    rotate: 90;
+    position: absolute;
+    top: 45%;
+    height: 75px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.sidebar-manager:hover {
+    background-color: #444;
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+#main {
+    transition: margin-left .5s;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+.center {
+    height: 100%;
+    position: relative;
+    margin-top: 10%;
+}
+
+.form-group {
+    width: 300px;
+}
+
+.btn-primary:hover {
+    background-color: #00d607;
+    color: white;
+}
+
+.dropdown-item:hover {
+    border-radius: 5px;
+    background-color: powderblue;
+}
+
+
+/**********************************/
+
+
+/**********************************/
+
+
+/**********************************/
+
+
+/* The switch - the box around the slider */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    top: 12px;
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 22px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* 
+@media all and (min-width: 600px) {
+    .navbar .dropdown-menu-end {
+        right: 0;
+        left: auto;
+    }
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+        margin-top: 0;
+    }
+    .navbar .nav-item:hover .nav-link {
+        background-color: powderblue;
+        border-radius: 5px;
+    }
+    .navbar .dropdown-menu.fade-down {
+        top: 80%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+    }
+    .navbar .dropdown-menu.fade-up {
+        top: 180%;
+    }
+    .navbar .nav-item:hover .dropdown-menu {
+        transition: .3s;
+        opacity: 1;
+        visibility: visible;
+        top: 100%;
+        transform: rotateX(0deg);
+    }
+} */

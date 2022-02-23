@@ -1,0 +1,37 @@
+{% extends "layout.html" %} {% load static %} {% block script %}
+<script src="{% static 'auth.js' %}" crossorigin="anonymous"></script>
+{% endblock %} {% block body %} {% if message %}
+<div class="text-center">{{ message }}</div>
+{% endif %}
+
+<div class="center">
+
+    <h2 class="text-center">Register</h2>
+
+
+    <div class="d-flex justify-content-center flex-column text-center" id="register_form">
+        <form action="{% url 'register' %}" method="post" class="p-2 mx-auto">
+            {% csrf_token %} {% csrf_token %}
+            <div class="p-1 form-group">
+                <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+            </div>
+            <div class="p-1 form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email Address">
+            </div>
+            <div class="p-1 form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="p-1 form-group">
+                <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Register">
+        </form>
+        <div>
+            Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

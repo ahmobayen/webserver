@@ -81,6 +81,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'webserver.wsgi.application'
 
+AUTH_USER_MODEL = 'trader.user'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -146,7 +147,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # if in development mode
 if DEBUG:
     STATICFILES_DIRS = [
-        Path.joinpath(BASE_DIR, "static"),
+        Path.joinpath(BASE_DIR, "../static"),
     ]
 
 # if in deployment mode
@@ -155,7 +156,7 @@ else:
     CSRF_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
 
-    STATIC_ROOT = Path.joinpath(BASE_DIR, "static")
+    STATIC_ROOT = Path.joinpath(BASE_DIR, "../static")
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
