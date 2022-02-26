@@ -1,14 +1,11 @@
 function toggle_dark_mode() {
     document.body.classList.toggle("dark-mode");
-    if (navbar.classList.contains("navbar-image-light")) {
-        navbar.classList.remove("navbar-image-light");
+
+    if (navbar.classList.contains("navbar-light")) {
         navbar.classList.remove("navbar-light");
-        navbar.classList.add("navbar-image-dark");
         navbar.classList.add("navbar-dark");
     } else {
-        navbar.classList.remove("navbar-image-dark");
         navbar.classList.remove("navbar-dark");
-        navbar.classList.add("navbar-image-light");
         navbar.classList.add("navbar-light");
     }
 }
