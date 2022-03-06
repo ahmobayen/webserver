@@ -4,97 +4,96 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% translate "Trader" %}{% endblock %}</title>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>{% block title %}{% translate "Pocket Trader" %}{% endblock %}</title>
+    <!-- Favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Bootstrap ICON-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <link href="{% static 'styles.css' %}" rel="stylesheet">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/bootstrap_style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <script src="{% static 'style.js' %}" crossorigin="anonymous"></script>
-
-    {% block script %} {% endblock %}
 </head>
 
-<body>
-    <div id="sidebar" class="sidebar">
-
-        <a class="d-inline-flex">
-            <p class="px-2">Dark Mode</p>
-            <label class="switch px-2">
-                <input type="checkbox" onclick="toggle_dark_mode()">
-                <span class="slider round"></span>
-              </label>
-
-        </a>
-
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-    </div>
-
-    <div id="main">
-        <nav class="navbar navbar-expand-lg navbar-light rounded pt-1 mt-1 px-2 mx-2" id="navbar">
-            <div class="container-fluid">
-                <a class="p-2 navbar-brand" href="{% url 'index'%}">
-                    <img src="{% static 'favicon/favicon-32x32.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">Trader
-                </a>
-
-                <button class="p-2 navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span></button>
-                <div class="p-2 collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                            <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <div class="nav-item dropdown">
-                        {% if user.is_authenticated%}
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Signed in as <strong>{{ user.username }}</strong>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <hr class="dropdown-divider">
-                            <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
+<body class="d-flex flex-column">
+    <main class="flex-shrink-0">
+        <section id="navbar">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid px-5">
+                    <a class="navbar-brand" href="{% url 'index'%}">
+                        <img src="{% static 'favicon/favicon-32x32.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top"> Pocket Trader
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'blogs' %}">Blogs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'about'%}">About us</a></li>
                         </ul>
 
-                        {% else %}
-                        <a href="{% url 'login' %}" class="p-1 btn btn-outline-primary" id="login">Log in</a>
-                        <a href="{% url 'register' %}" class="p-1 btn btn-outline-primary" id="register">Register</a> {% endif %}
+                        <div class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                            {% if user.is_authenticated%}
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Signed in as <strong>{{ user.username }}</strong>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdownProfile">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <hr class="dropdown-divider">
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
+                            </ul>
+
+                            {% else %}
+                            <a href="{% url 'login' %}" class="mx-1 px-4 btn btn-primary rounded-pill" id="login">Log in</a>
+                            <a href="{% url 'register' %}" class="mx-1 px-3 btn btn-primary rounded-pill" id="register">Register</a> {% endif %}
+                        </div>
                     </div>
                 </div>
-        </nav>
+            </nav>
+        </section>
 
-        <button id="sidebarManager" class="sidebar-manager material-icons" onclick="openNav()">settings
-        </button>
-
-        <div class="content pt-2 px-5 mt-2 mx-5 container">
-
+        <!-- main -->
+        <section id="main">
             {% block body%} {% endblock %}
-        </div>
+        </section>
 
+        <!-- Footer-->
+        <section id="footer">
+            <footer class="bg-dark py-2 mt-auto">
+                <div class="container-fluid px-5">
+                    <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                        <div class="col-auto">
+                            <div class="small m-0 text-white">Copyright &copy; A.H.Mobayen</div>
+                        </div>
+                        <div class="col-auto">
+                            <a class="link-light small" href="#!">Privacy</a>
+                            <span class="text-white mx-1">&middot;</span>
+                            <a class="link-light small" href="#!">Terms</a>
+                            <span class="text-white mx-1">&middot;</span>
+                            <a class="link-light small" href="#!">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+    </main>
+
+    <section id="scripts">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="{% static 'js/scripts.js' %}" crossorigin="anonymous"></script>
+        {% block script %} {% endblock %}
+    </section>
 </body>
 
 </html>

@@ -1,0 +1,11 @@
+.auth-center {
+    height: 100vh;
+    position: relative;
+    margin-top: 12%;
+}
+
+header {
+    background-image: url(/static/img/jumbotran-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
