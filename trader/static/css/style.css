@@ -5,7 +5,20 @@
 }
 
 header {
-    background-image: url(/static/img/jumbotran-bg.jpg);
+    background-image: radial-gradient(closest-side, transparent, #212630), url(/static/img/jumbotran-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.bg-light-dark {
+    background-color: #212630;
+}
+
+.bg-dark-blue {
+    background-color: #23395d;
+}
+
+.btn-primary {
+    background-color: #2d4772;
+    border-color: #23395d;
 }

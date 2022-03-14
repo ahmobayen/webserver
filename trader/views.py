@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Models
 from .models import User, Articles
-
+from .util import *
 
 # Create your views here.
 @csrf_exempt

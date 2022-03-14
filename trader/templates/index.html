@@ -19,13 +19,76 @@
                     </div>
                 </div>
                 <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-                    <img class="img-fluid rounded-5 my-5" src="{% static 'img/header-img.jpg'%}" alt="..." /></div>
+                    <img class="img-fluid rounded-5 my-5" id="header_img" src="{% static 'img/header-img.png'%}" alt="..." width="350" height="350" /></div>
             </div>
         </div>
     </header>
 
+
+    <!-- price section-->
+    <div class="py-2 bg-light-dark text-white">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-2">
+                    <div class="text-center" id="BTCUSDT">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img class="rounded-circle me-3" src="{% static 'img/currency_icons/btc.svg'%}" alt="BTC" width="50" , height="50" />
+                            <div class="fw-bold"> NA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="text-center" id="ETHUSDT">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img class="rounded-circle me-3" src="{% static 'img/currency_icons/eth.svg'%}" alt="ETH" width="50" , height="50" />
+                            <div class="fw-bold"> NA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="text-center" id="SOLUSDT">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img class="rounded-circle me-3" src="{% static 'img/currency_icons/sol.svg'%}" alt="SOL" width="50" , height="50" />
+                            <div class="fw-bold"> NA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="text-center" id="ADAUSDT">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img class="rounded-circle me-3" src="{% static 'img/currency_icons/ada.svg'%}" alt="ADA" width="50" , height="50" />
+                            <div class="fw-bold"> NA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="text-center" id="BNBUSDT">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img class="rounded-circle me-3" src="{% static 'img/currency_icons/bnb.svg'%}" alt="BNB" width="50" , height="50" />
+                            <div class="fw-bold"> NA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="text-center" id="DOGEUSDT">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img class="rounded-circle me-3" src="{% static 'img/currency_icons/doge.svg'%}" alt="DOGE" width="50" , height="50" />
+                            <div class="fw-bold"> NA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Features section-->
-    <section class="py-5" id="features">
+    <section class="py-5 bg-dark text-white" id="features">
         <div class="container px-5 my-5">
             <div class="row gx-5">
                 <div class="col-lg-4 mb-5 mb-lg-0">
@@ -34,22 +97,22 @@
                 <div class="col-lg-8">
                     <div class="row gx-5 row-cols-1 row-cols-md-2">
                         <div class="col mb-5 h-100">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                            <div class="feature bg-dark-blue bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                             <h2 class="h5">Stay in touch</h2>
                             <p class="mb-0">Fill in this short form to stay in touch with news and special events from the market.</p>
                         </div>
                         <div class="col mb-5 h-100">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                            <div class="feature bg-dark-blue bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
                             <h2 class="h5">Monitor everything</h2>
                             <p class="mb-0">We care about both Charts and Social Media which is strong enough to control the fluctuations.</p>
                         </div>
                         <div class="col mb-5 mb-md-0 h-100">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-graph-up-arrow"></i></div>
+                            <div class="feature bg-dark-blue bg-gradient text-white rounded-3 mb-3"><i class="bi bi-graph-up-arrow"></i></div>
                             <h2 class="h5">Manage tips risk</h2>
                             <p class="mb-0">Some people offering crypto trading tips might not have your best interests at heart. So don’t get stung making the same mistakes as others.</p>
                         </div>
                         <div class="col h-100">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-speedometer"></i></div>
+                            <div class="feature bg-dark-blue bg-gradient text-white rounded-3 mb-3"><i class="bi bi-speedometer"></i></div>
                             <h2 class="h5">Fast and Robust Technology</h2>
                             <p class="mb-0">Our trading engine built by pioneer AI and ML algorithms for on demand and real-time trade process suggestion</p>
                         </div>
@@ -58,27 +121,9 @@
             </div>
         </div>
     </section>
-    <!-- Testimonial section-->
-    <div class="py-5 bg-light" id="Testimonial">
-        <div class="container px-5 my-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-10 col-xl-7">
-                    <div class="text-center">
-                        <div class="fs-4 mb-4 fst-italic">“Risk comes from not knowing what you are doing.”</div>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <img class="rounded-circle me-3" src="{% static 'img/WBP.jpg'%}" alt="WB" />
-                            <div class="fw-bold">
-                                warren buffett
-                                <span class="fw-bold text-primary mx-1">/</span> CEO, Berkshire Hathaway
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- Blog preview section-->
-    <section class="py-5" id="blog_preview">
+    <section class="py-5 bg-light-dark text-white" id="blog_preview">
         <div class="container px-5 my-5">
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6">
@@ -91,8 +136,12 @@
             <div class="row gx-5" id="blogs">
 
             </div>
-            <!-- Call to action-->
-            <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+    </section>
+
+    <!-- Call to action-->
+    <section class="py-1 bg-light-dark text-white" id="features">
+        <div class="container px-5 my-5">
+            <aside class="bg-dark-blue bg-gradient rounded-3 p-4 p-sm-5 mt-5">
                 <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                     <div class="mb-4 mb-xl-0">
                         <div class="fs-3 fw-bold text-white">New Features, delivered to you.</div>
@@ -108,6 +157,8 @@
                 </div>
             </aside>
         </div>
+
+
     </section>
 </main>
 
