@@ -5,7 +5,6 @@ from django.urls import reverse
 
 from .models import User
 
-
 # Create your tests here.
 class UserRegisterTestCase(TestCase):
     client = Client()
@@ -21,29 +20,16 @@ class UserRegisterTestCase(TestCase):
     #     user_without_email = User.objects.create_user(username='user_without_email', password='123')
     #     user_without_username = User.objects.create_user(email='test@test.com', password='123')
 
-    def test_loading_index(self):
-        response = self.client.get("")
-        self.assertEqual(response.status_code, 200)
+    def test_loading_trade(self):
+        from .urls import urlpatterns
 
-    def test_loading_about(self):
-        response = self.client.get("/about")
-        self.assertEqual(response.status_code, 200)
-
-    def test_loading_contact(self):
-        response = self.client.get("/contact")
-        self.assertEqual(response.status_code, 200)
-
-    def test_loading_login(self):
-        response = self.client.get("/login")
-        self.assertEqual(response.status_code, 200)
-
-    def test_loading_register(self):
-        response = self.client.get("/register")
-        self.assertEqual(response.status_code, 200)
+        for url in urlpatterns:
+            if url.name != "logout":
+                response = self.client.get(reverse(url.name))
+                self.assertEqual(response.status_code, 200)
 
     def test_user_login(self):
         response = self.client.post(reverse("login"), {'username': 'user1', 'password': '123', })
         user = auth.get_user(self.client)
         self.assertTrue(user.is_authenticated)
-
 

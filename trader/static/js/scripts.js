@@ -6,13 +6,23 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-let page = 2;
-
 document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('blog_preview')) {
         load_abstract_posts();
     }
+
+    if (document.getElementById('live_price')) {
+        const tickers = ['BTCUSDT', 'ETHUSDT', 'ADAUSDT', 'BNBUSDT', 'SOLUSDT', ];
+        setInterval(function() {
+            for (let ticker of tickers) {
+                get_realtime_price(ticker);
+            }
+        }, 2000)
+    }
+
+
     if (document.getElementById('blog_home')) {
+        let page = 2;
         load_posts();
 
         window.addEventListener('scroll', () => {
@@ -105,29 +115,11 @@ function post_style(content, slice_size) {
             </div>`
 }
 
-function get_realtime_data(ticker) {
+function get_realtime_price(ticker) {
+    let price = document.querySelector(`#${ticker}`)
     fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${ticker}`)
         .then(response => response.json())
         .then(data => {
-            load_price(ticker)
-        })
-        .catch(error => {
-            console.error('Error:', error);
+            price.innerHTML = parseFloat(data.price).toFixed(4);
         });
-}
-
-function load_price(ticker) {
-    const section = document.querySelector('#ticker_price');
-    let currency_price = document.createElement('div');
-    currency_price.classList.add('col-2');
-
-    currency_price.innerHTML = `<div class="text-center">
-                                    <div class="d-flex align-items-center justify-content-center">                                      
-                                        <img class="rounded-circle me-3" src="{% static 'img/currency_icons/${ticker.symbol}.svg'%}" alt="${ticker.symbol}" width="64" height="64" />
-                                        <div class="fw-bold"> ${ticker.price}
-                                        </div>
-                                    </div>
-                                </div>`
-    section.appendChild(currency_price);
-
 }

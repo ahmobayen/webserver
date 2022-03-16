@@ -1,7 +1,13 @@
-.auth-center {
-    height: 100vh;
-    position: relative;
-    margin-top: 12%;
+.auth-register {
+    height: 100%;
+}
+
+.auth-login {
+    height: 88vh;
+}
+
+.form {
+    max-width: 400px;
 }
 
 header {
@@ -21,4 +27,5 @@ header {
 .btn-primary {
     background-color: #2d4772;
     border-color: #23395d;
+    margin: 5px;
 }
