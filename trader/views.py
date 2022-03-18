@@ -1,92 +1,37 @@
 # Django Libraries
-from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from django.urls import reverse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db import IntegrityError
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
 
 # Models
-from .models import User, Articles
+from .models import Articles, Subscription
 from .util import *
+
 
 # Create your views here.
 @csrf_exempt
 def index(request):
     if request.method == "POST":
-        print(request.POST["email"])
-    return render(request, "index.html")
+        email = request.POST["email"]
+        try:
+            subscribe = Subscription.objects.create(email=email)
+            subscribe.save()
+            messages.add_message(request, messages.SUCCESS, "Subscribed Successfully.")
+        except IntegrityError:
+            messages.add_message(request, messages.ERROR, "Already Subscribed!")
+    return render(request, "trader/index.html")
 
 
 def about(request):
-    return render(request, "about.html")
+    return render(request, "trader/about.html")
 
 
 def contact(request):
-    return render(request, "contact.html")
-
-
-def login_view(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return HttpResponseRedirect(reverse("index"))
-        else:
-            return render(request, "login.html", {
-                "message": "Invalid username and/or password."
-            })
-    return render(request, "login.html")
-
-
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect(reverse("index"))
-
-
-def register(request):
-    if request.user.is_authenticated:
-        # must redirect to market panel
-        return HttpResponseRedirect(reverse("index"))
-
-    if request.method == "POST":
-        username = request.POST["username"]
-        email = request.POST["email"]
-        password = request.POST["password"]
-        confirmation = request.POST["confirmation"]
-        message = ""
-
-        if len(username) == 0:
-            message = message + "Username is not entered \n"
-
-        if len(password) == 0:
-            message = message + "Password is not entered \n"
-
-        if len(email) == 0:
-            message = message + "Email is not entered \n"
-        if password != confirmation:
-            message = message + "Passwords must match"
-
-        if len(message) != 0:
-            print(message)
-            return render(request, "register.html", {
-                "message": message,
-            })
-
-        try:
-            user = User.objects.create_user(username, email, password)
-            user.save()
-        except IntegrityError:
-            return render(request, "register.html", {
-                "message": "Username already taken."
-            })
-        login(request, user)
-        return HttpResponseRedirect(reverse("index"))
-    return render(request, "register.html")
+    return render(request, "trader/contact.html")
 
 
 def articles(request):
@@ -120,4 +65,4 @@ def articles(request):
         data.append(page_info)
         return JsonResponse(data, safe=False)
 
-    return render(request, "blog-home.html")
+    return render(request, "trader/blog-home.html")

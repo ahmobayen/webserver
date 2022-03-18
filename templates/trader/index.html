@@ -13,7 +13,7 @@
                             Everyone wants cryptocurrency these days. But to get in on the action, you’ll need information where and when you can buy and sell digital currencies. So, we’ve compiled a list of everything you need to know to get started.
                         </p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3 rounded-pill" href="{%url 'register' %}">Get Started</a>
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3 rounded-pill" href="{%url 'users:register' %}">Get Started</a>
                             <a class="btn btn-outline-light btn-lg px-4 rounded-pill" href="#features">Learn More</a>
                         </div>
                     </div>
@@ -132,16 +132,26 @@
     <!-- Call to action-->
     <section class="py-1 bg-light-dark text-white" id="features">
         <div class="container px-5 my-5">
-            <aside class="bg-dark-blue bg-gradient rounded-3 p-4 p-sm-5 mt-5">
+            <aside class="bg-dark-blue bg-gradient rounded-3 p-4 p-sm-5 mt-5 text-center">
+
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-4 messages" id="messages">
+                        {% if messages %} {% for message in messages %}
+                        <div class="alert {{ message.tags }} text-center" role="alert">{{ message }}
+                        </div>
+                        {% endfor %} {% endif %}
+                    </div>
+                </div>
+
                 <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                     <div class="mb-4 mb-xl-0">
                         <div class="fs-3 fw-bold text-white">New Features, delivered to you.</div>
-                        <div class="text-white-50">Sign up for our newsletter for the latest updates.</div>
+                        <div class="text-white-50">Subscribe our newsletters for the latest updates.</div>
                     </div>
                     <div class="ms-xl-4">
-                        <form action="{% url 'index' %}" method="post" class="input-group mb-2">
+                        <form action="{% url 'trader:index' %}" method="post" class="input-group mb-2">
                             <input class="form-control" type="text" name="email" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
-                            <button class="btn btn-outline-light" id="button-newsletter" type="submit">Sign up</button>
+                            <button class="btn btn-outline-light" id="button-newsletter" type="submit">Subscribe</button>
                         </form>
                         <div class="small text-white-50">We care about privacy, and will never share your data.</div>
                     </div>

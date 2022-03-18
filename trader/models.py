@@ -3,9 +3,9 @@ from django.core.exceptions import ValidationError
 from django.db import models
 
 
-# Create your models here.
-class User(AbstractUser):
-    pass
+class Subscription(models.Model):
+    email = models.EmailField(primary_key=True, max_length=64)
+    is_active = models.BooleanField(default=True)
 
 
 class Categories(models.Model):

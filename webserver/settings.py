@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 from decouple import config
+from django.contrib.messages import constants as messages
+
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,7 +45,8 @@ INSTALLED_APPS = [
     # 3D library Apps
 
     # My installed Apps
-    'trader.apps.TraderConfig'
+    'trader.apps.TraderConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +70,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [Path.joinpath(BASE_DIR, "templates")],
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -79,9 +82,17 @@ TEMPLATES = [
     },
 ]
 
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
+
 WSGI_APPLICATION = 'webserver.wsgi.application'
 
-AUTH_USER_MODEL = 'trader.user'
+AUTH_USER_MODEL = 'users.user'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -147,7 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # if in development mode
 if DEBUG:
     STATICFILES_DIRS = [
-        Path.joinpath(BASE_DIR, "../static"),
+        Path.joinpath(BASE_DIR, "static"),
     ]
 
 # if in deployment mode
@@ -156,11 +167,11 @@ else:
     CSRF_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
 
-    STATIC_ROOT = Path.joinpath(BASE_DIR, "../static")
+    STATIC_ROOT = Path.joinpath(BASE_DIR, "static")
     STATICFILES_FINDERS = (
         'django.contrib.staticfiles.finders.FileSystemFinder',
         'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     )
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')

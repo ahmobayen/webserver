@@ -25,8 +25,9 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('admin/', admin.site.urls),
-    path('', include('trader.urls')),
+    path('admin', admin.site.urls),
+    path('', include('trader.urls', namespace='trader')),
+    path('', include('users.urls', namespace='users')),
 
     prefix_default_language=False,
 )

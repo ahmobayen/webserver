@@ -7,6 +7,14 @@
 // Use this file to add JavaScript to your project
 
 document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('messages')) {
+        let node = document.getElementById('messages');
+        setTimeout(function() {
+            node.parentNode.removeChild(node)
+        }, 10000);
+
+    }
+
     if (document.getElementById('blog_preview')) {
         load_abstract_posts();
     }

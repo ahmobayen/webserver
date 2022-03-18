@@ -31,15 +31,15 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid px-5">
-                    <a class="navbar-brand" href="{% url 'index'%}">
+                    <a class="navbar-brand" href="{% url 'trader:index' %}">
                         <img src="{% static 'favicon/favicon-32x32.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top"> Pocket Trader
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="{% url 'blogs' %}">Blogs</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'about'%}">About us</a></li>
-                        </ul>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'trader:blogs' %}">Blogs</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'trader:about' %}">About us</a></li>
+                        </ul
 
                         <div class="navbar-nav mb-2 mb-lg-0 ms-auto">
                             {% if user.is_authenticated%}
@@ -50,12 +50,12 @@
                             <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdownProfile">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
+                                <li><a class="dropdown-item" href="{% url 'users:logout' %}">Log Out</a></li>
                             </ul>
 
                             {% else %}
-                            <a href="{% url 'login' %}" class="mx-1 px-4 btn btn-primary rounded-pill" id="login">Log in</a>
-                            <a href="{% url 'register' %}" class="mx-1 px-3 btn btn-primary rounded-pill" id="register">Register</a> {% endif %}
+                            <a href="{% url 'users:login' %}" class="mx-1 px-4 btn btn-primary rounded-pill" id="login">Log in</a>
+                            <a href="{% url 'users:register' %}" class="mx-1 px-3 btn btn-primary rounded-pill" id="register">Register</a> {% endif %}
                         </div>
                     </div>
                 </div>
