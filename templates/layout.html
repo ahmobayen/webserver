@@ -34,24 +34,29 @@
                     <a class="navbar-brand" href="{% url 'trader:index' %}">
                         <img src="{% static 'favicon/favicon-32x32.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top"> Pocket Trader
                     </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="{% url 'trader:blogs' %}">Blogs</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'trader:about' %}">About us</a></li>
-                        </ul
+                        </ul>
 
-                        <div class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                        <div class="navbar-nav mb-2 mb-lg-0 ms-auto ml-auto">
+
                             {% if user.is_authenticated%}
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Signed in as <strong>{{ user.username }}</strong>
-                            </a>
+                            <div class="btn-group">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Signed in as <strong>{{ user.username }}</strong>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <hr class="dropdown-divider">
+                                    <li><a class="dropdown-item" href="{% url 'users:logout' %}">Log Out</a></li>
+                                </ul>
+                            </div>
 
-                            <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdownProfile">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <hr class="dropdown-divider">
-                                <li><a class="dropdown-item" href="{% url 'users:logout' %}">Log Out</a></li>
-                            </ul>
 
                             {% else %}
                             <a href="{% url 'users:login' %}" class="mx-1 px-4 btn btn-primary rounded-pill" id="login">Log in</a>
