@@ -39,6 +39,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'trader:market' %}">Market</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'trader:blogs' %}">Blogs</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'trader:about' %}">About us</a></li>
                         </ul>
@@ -59,8 +60,8 @@
 
 
                             {% else %}
-                            <a href="{% url 'users:login' %}" class="mx-1 px-4 btn btn-primary rounded-pill" id="login">Log in</a>
-                            <a href="{% url 'users:register' %}" class="mx-1 px-3 btn btn-primary rounded-pill" id="register">Register</a> {% endif %}
+                            <a href="{% url 'users:login' %}" class="mx-1 mb-2 px-4 btn btn-primary rounded-pill" id="login">Log in</a>
+                            <a href="{% url 'users:register' %}" class="mx-1 mb-2 px-3 btn btn-primary rounded-pill" id="register">Register</a> {% endif %}
                         </div>
                     </div>
                 </div>
@@ -78,7 +79,7 @@
                 <div class="container-fluid px-5">
                     <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                         <div class="col-auto">
-                            <div class="small m-0 text-white">Copyright &copy; A.H.Mobayen</div>
+                            <div class="small m-0 text-white">Copyright &copy; A.H.Mobayen Powered by TradingView</div>
                         </div>
                         <div class="col-auto">
                             <a class="link-light small" href="#!">Privacy</a>

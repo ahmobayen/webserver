@@ -26,14 +26,6 @@ def index(request):
     return render(request, "trader/index.html")
 
 
-def about(request):
-    return render(request, "trader/about.html")
-
-
-def contact(request):
-    return render(request, "trader/contact.html")
-
-
 def articles(request):
     if "query" in request.GET.keys():
         try:
@@ -66,3 +58,6 @@ def articles(request):
         return JsonResponse(data, safe=False)
 
     return render(request, "trader/blog-home.html")
+
+def market(request):
+    return render(request, "trader/market.html")

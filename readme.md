@@ -2,7 +2,7 @@
 This website is for aggregating and demonstrating information about cryptocurrencies:
 
 - News from other sources
-- real time price/ chart from Yahoo Finance
+- real time price/ chart
 
 Then aggregate this information with each other and shows the result.
 
