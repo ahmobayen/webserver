@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.test import TestCase, Client
 from django.urls import reverse
 
-from .models import User
+from users.models import User
 
 # Create your tests here.
 class UserRegisterTestCase(TestCase):

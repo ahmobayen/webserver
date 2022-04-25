@@ -12,7 +12,7 @@ from .models import User
 # Create your views here.
 def login_view(request):
     if request.method == "POST":
-        username = request.POST["username"]
+        username = request.POST["username"].lower()
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
 
@@ -37,7 +37,7 @@ def register(request):
         return HttpResponseRedirect(reverse("trader:index"))
 
     if request.method == "POST":
-        username = request.POST["username"]
+        username = request.POST["username"].lower()
         email = request.POST["email"]
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
@@ -59,7 +59,7 @@ def register(request):
 
         try:
             user = User.objects.create_user(username, email, password)
-            # user.save()
+            user.save()
         except IntegrityError:
             messages.add_message(request, messages.ERROR, "Username already taken!")
             return render(request, "users/register.html")

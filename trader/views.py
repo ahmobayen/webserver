@@ -59,5 +59,10 @@ def articles(request):
 
     return render(request, "trader/blog-home.html")
 
+
 def market(request):
     return render(request, "trader/market.html")
+
+
+def load_prices(request, ticker):
+        return JsonResponse(get_price(ticker))

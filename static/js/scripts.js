@@ -47,8 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 
-
-
 function load_abstract_posts() {
 
     fetch(`/blogs?query=3`, {
@@ -125,7 +123,7 @@ function post_style(content, slice_size) {
 
 function get_realtime_price(ticker) {
     let price = document.querySelector(`#${ticker}`)
-    fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${ticker}`)
+    fetch(`./load_prices/${ticker}`)
         .then(response => response.json())
         .then(data => {
             price.innerHTML = parseFloat(data.price).toFixed(4);

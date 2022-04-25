@@ -28,6 +28,6 @@ urlpatterns = [
     path("chart", TemplateView.as_view(template_name="trader/widgets/chart.html"), name="chart"),
     path("ta_analysis", TemplateView.as_view(template_name="trader/widgets/ta_analysis.html"), name="ta_analysis"),
     path("watchlist", TemplateView.as_view(template_name="trader/widgets/watchlist.html"), name="watchlist"),
-
+    path("load_prices/<str:ticker>", views.load_prices, name="load_prices"),
 ]
 

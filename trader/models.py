@@ -48,3 +48,20 @@ class Articles(models.Model):
 
     def __str__(self):
         return f"{self.title} on {self.timestamp}"
+
+
+class SymbolsInfo(models.Model):
+    symbol = models.CharField(max_length=10)
+    price = models.FloatField(max_length=15)
+    last_request_time = models.DateTimeField()
+
+    class Meta:
+        verbose_name = "Symbol Information"
+        verbose_name_plural = "Symbols Information"
+        ordering = ('symbol',)
+
+    def serialize(self):
+        return {
+            "symbol": self.symbol,
+            "price": self.price,
+        }
