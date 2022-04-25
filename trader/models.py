@@ -1,6 +1,8 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 
+from users.models import User
+
 
 class Subscription(models.Model):
     email = models.EmailField(primary_key=True, max_length=64)
@@ -65,3 +67,12 @@ class SymbolsInfo(models.Model):
             "symbol": self.symbol,
             "price": self.price,
         }
+
+
+class Marketing(models.Model):
+    symbol = models.ForeignKey(SymbolsInfo, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='currency_owner')
+
+    entry_price = models.FloatField(max_length=15)
+    entry_volume = models.FloatField(max_length=10)
+    entry_timestamp = models.DateTimeField(auto_now_add=True)

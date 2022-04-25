@@ -1,55 +1,110 @@
 {% extends 'layout.html' %} {%load static%} {% block body %}
 
-<section class="py-5 bg-light-dark text-white">
-    <div class="container-fluid">
-        <div class="row" id="live_price">
-            <div class="col-lg-2 px-2">
-                <div class="text-center mt-3">
-                    <div class="d-flex align-items-center justify-content-left">
+<!-- Price section-->
+<section class="py-2 bg-light-dark text-white" id="live_price">
+    <div class="container px-5 my-2">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-md-3 col-lg-2 m-2">
+                <div class="text-center">
+                    <div class="d-flex align-items-center justify-content-center">
                         <img class="rounded-circle me-3" src="{% static 'img/currency_icons/btc.svg'%}" alt="BTC" width="40" , height="40" />
                         <div class="fw-bold" id="BTCUSDT">
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-3">
-                    <div class="d-flex align-items-center justify-content-left">
+            </div>
+            <div class="col-md-3 col-lg-2 m-2">
+                <div class="text-center">
+                    <div class="d-flex align-items-center justify-content-center">
                         <img class="rounded-circle me-3" src="{% static 'img/currency_icons/eth.svg'%}" alt="ETH" width="40" , height="40" />
                         <div class="fw-bold" id="ETHUSDT">
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-3">
-                    <div class="d-flex align-items-center justify-content-left">
+            </div>
+            <div class="col-md-3 col-lg-2 m-2">
+                <div class="text-center">
+                    <div class="d-flex align-items-center justify-content-center">
                         <img class="rounded-circle me-3" src="{% static 'img/currency_icons/sol.svg'%}" alt="SOL" width="40" , height="40" />
                         <div class="fw-bold" id="SOLUSDT">
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-3">
-                    <div class="d-flex align-items-center justify-content-left">
+            </div>
+            <div class="col-md-3 col-lg-2 m-2">
+                <div class="text-center">
+                    <div class="d-flex align-items-center justify-content-center">
                         <img class="rounded-circle me-3" src="{% static 'img/currency_icons/ada.svg'%}" alt="ADA" width="40" , height="40" />
                         <div class="fw-bold" id="ADAUSDT">
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-3">
-                    <div class="d-flex align-items-center justify-content-left">
+            </div>
+            <div class="col-md-3 col-lg-2 m-2">
+                <div class="text-center">
+                    <div class="d-flex align-items-center justify-content-center">
                         <img class="rounded-circle me-3" src="{% static 'img/currency_icons/bnb.svg'%}" alt="BNB" width="40" , height="40" />
                         <div class="fw-bold" id="BNBUSDT">
                         </div>
                     </div>
                 </div>
-                <!-- <iframe src="{%  url 'trader:watchlist' %}" width="100%" height="600" style="border:none;"></iframe> -->
-            </div>
-            <div class="col-lg-6">
-                <iframe src="{%  url 'trader:chart' %}" width="100%" height="600" style="border:none;"></iframe>
-            </div>
-            <div class="col-lg-4">
-                <iframe src="{%  url 'trader:ta_analysis' %}" width="100%" height="600" style="border:none;"></iframe>
             </div>
         </div>
     </div>
+    <hr>
+</section>
 
+<!-- Chart section-->
+<section class="py-2 bg-light-dark text-white container-fluid" id="charts">
+
+    <div class="row text-center">
+        <div class="col-lg-8">
+            <iframe src="{%  url 'trader:chart' %}" width="100%" height="650" style="border:none;"></iframe>
+        </div>
+        <div class="col-lg-4">
+            {% if user.is_authenticated %}
+            <form action="{% url 'trader:market' %}" class="" method="post">
+                {% csrf_token %}
+
+                <div class="mb-3 row">
+                    <label for="quantity" class="col-sm-2 col-form-label">Quantity:</label>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="text" name="quantity" placeholder="quantity" autofocus required>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="price" class="col-sm-2 col-form-label">Price:</label>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-9">
+                        <input class="form-control " type="text" name="price" placeholder="price" autofocus required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <button class="w-100 btn btn-success btn-lg" id="buyButton" type="submit">Buy</button>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <button class="w-100  btn btn-danger btn-lg" id="sellButton" type="submit">Sell</button>
+                    </div>
+                    <hr>
+
+                </div>
+            </form>
+            {% else %}
+            <div class="text-center border rounded-2">
+                <strong>Please Login for trading</strong>
+                <p>Already have an account?<br> <a href="{% url 'users:login' %}">Log In here.</a></p>
+                <p>Don't have an account?<br> <a href="{% url 'users:register' %}">Register here.</a></p>
+            </div>
+
+            {% endif %}
+
+            <div class="d-flex justify-content-center text-center">
+                <iframe src="{%  url 'trader:ta_analysis' %}" width="500" height="500" style="border:none;"></iframe>
+            </div>
+        </div>
+    </div>
 </section>
 
 
