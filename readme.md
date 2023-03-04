@@ -23,26 +23,31 @@ ALLOWED_HOSTS =127.0.0.1,\
 ## Install 
 1- Clone the repository to your local machine.
 2- Create a virtual environment using the following command:
->[settings]\
-virtualenv env \
+~~~
+virtualenv env 
+~~~
 
 3- Activate the virtual environment using the following command:
->[settings]\
-source env/bin/activate \
+~~~
+source env/bin/activate
+~~~
 
 4- do the requirements section manual
 5- do the configuration section manual
 6- Run the following command to set up the database:
->[settings]\
-python manage.py migrate \
+~~~
+python manage.py migrate
+~~~
 
 7- Start the development server using the following command:
->[settings]\
-python manage.py migrate \
+~~~
+python manage.py migrate
+~~~
 
 8- run server:
->[settings]\
+~~~
 python manage.py runserver
+~~~
 
 9- Open your web browser and navigate to http://localhost:8000/ to use the app.
 
